@@ -1,0 +1,112 @@
+\documentclass[12pt]{report}
+
+% Load essential packages first
+\usepackage{graphicx} % Load this first for image support
+\usepackage{fancyhdr} % Load this right after graphicx for headers
+
+
+\usepackage{epigraph}
+
+% Load amsmath and other fundamental packages early
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage[table]{xcolor}
+\usepackage{underscore}
+\usepackage{tikz}
+\usepackage{pgfgantt}
+\usepackage{adjustbox}
+\usepackage{pgfgantt}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[top=.75in, left=.75in, right=.75in, bottom=1in]{geometry}
+\usepackage{nameref}
+
+% Table colors
+\definecolor{lightpink}{HTML}{FFB6C1}
+\definecolor{lightorange}{HTML}{FFD7B4}
+
+% Code styling
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+ backgroundcolor=\color{backcolour},
+ commentstyle=\color{codegreen},
+ keywordstyle=\color{magenta},
+ numberstyle=\tiny\color{codegray},
+ stringstyle=\color{codepurple},
+ basicstyle=\ttfamily\footnotesize,
+ breakatwhitespace=false,
+ breaklines=true,
+ captionpos=b,
+ keepspaces=true,
+ numbers=left,
+ numbersep=5pt,
+ showspaces=false,
+ showstringspaces=false,
+ showtabs=false,
+ tabsize=2
+}
+\lstset{style=mystyle}
+
+\usepackage[skip=10pt plus1pt, indent=0.5cm]{parskip}
+\usepackage{indentfirst}
+
+\newcommand{\coursename}{GL}
+\newcommand{\reporttitle}{Implementation of Stateless 
+Event-Driven Architecture for P2S Multi-Scheme Fee Computation Worker}
+\newcommand{\studentname}{ANAS TAHA}
+\newcommand{\teachername}{Mr. RACHID OULAD HAJ THAMI (ENSIAS)\\ Mr. ABDELKHALEK ABRIL (Effyis)}
+\newcommand{\jurymembers}{...}
+\newcommand{\leftfooter}{2024-2025}
+\renewcommand{\listfigurename}{Liste of Figures}
+\renewcommand{\listtablename}{Liste of Tables}
+
+\setlength{\headheight}{41pt}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyfoot[R]{\thepage}
+\fancyfoot[L]{\footnotesize}% \reporttitle}
+\fancyhead[L]{\includegraphics[width=1.5cm]{img/logos/ensias-removebg-preview.png}}
+
+% Line spacing
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage[uthmani]{quran} 
+
+\usepackage[colorlinks=true,linkcolor=black, citecolor=red]{hyperref}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+
+
+\usepackage{biblatex}
+\addbibresource{ref/ref.bib}
+
+\begin{document}
+\input{content/title.tex}
+\input{content/Thanks}
+\input{content/Abstract}
+\input{content/Summary}
+\input{content/abrev.list}
+\tableofcontents\label{toc}
+\input{content/lists}
+\pagebreak
+\input{content/Intro}
+
+\input{content/chp1}
+\input{content/chp2}
+\input{content/chp3}
+
+\input{content/conclusion}
+\input{ref/ref.tex}
+\appendix
+\input{appendix/appendix.tex}
+\end{document}

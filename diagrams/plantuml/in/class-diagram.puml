@@ -1,0 +1,190 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam backgroundColor #f8f9fa
+
+class InterchangeFeeRule {
+    +UUID id
+    +String interchangeCode
+    +String interchangeType
+    +String feeCurrency
+    +BigDecimal fixedRate
+    +BigDecimal maxFeeRate
+    +BigDecimal minFeeRate
+    +Date createdDate
+    +Date updatedDate
+}
+
+class SchemeFeeEvent {
+    +UUID id
+    +String eventId
+    +String eventName
+    +String serviceId
+    +String serviceName
+    +String documentName
+    +String sourceText
+    +String schemeType
+    +Long transactionCostCode
+    +Date createdDate
+    +Date updatedDate
+}
+
+class SchemeFeeCondition {
+    +UUID id
+    +UUID schemeFeeEventId
+    +String cardScheme
+    +String billedEntity
+    +String disputeReasons
+    +String paymentMethods
+    +String transactionClass
+    +String transactionPhase
+    +String transactionTypes
+    +String triggeringAction
+    +String processingNetwork
+    +String transactionStatus
+    +String transactionChannel
+    +String transactionRegions
+    +String messagingSystemType
+    +String transactionTechnology
+}
+
+class SchemeFeeRateStructure {
+    +UUID id
+    +UUID schemeFeeEventId
+    +String basis
+    +String rateType
+    +BigDecimal maxCharge
+    +BigDecimal minCharge
+    +String maxChargeCurrency
+    +String minChargeCurrency
+}
+
+class SimpleSchemeRate {
+    +UUID id
+    +UUID rateStructureId
+    +String currency
+    +BigDecimal flatAmount
+    +BigDecimal percentAmount
+    +String issuerRegion
+    +String acquirerRegion
+}
+
+class TieredSchemeRate {
+    +UUID id
+    +UUID rateStructureId
+    +Integer tierOrder
+    +BigDecimal startingValue
+    +BigDecimal endingValue
+    +String rateCurrency
+    +BigDecimal rateFlatAmount
+    +BigDecimal ratePercentAmount
+    +String rateIssuerRegion
+    +String rateAcquirerRegion
+}
+
+class Transaction {
+    +UUID id
+    +String authorizationCostCode
+    +String eventType
+    +String schemeProgramId
+    +DateTime creationDatetime
+    +String transactionCategoryCode
+    +String type
+    +String externalID
+    +String countryCode
+    +String status
+    +BigDecimal amount
+    +String currency
+    +UUID bilateralAgreementId
+}
+
+class AuditTrail {
+    +UUID id
+    +String eventType
+    +UUID transactionId
+    +DateTime timestamp
+    +String oldValue
+    +String newValue
+    +String changedBy
+}
+
+class BilateralAgreement {
+    +UUID id
+    +String issuerId
+    +String acquirerId
+    +UUID interchangeFeeRuleId
+    +Date effectiveDate
+    +Date expiryDate
+    +String status
+}
+
+class TransactionInterchangeFee {
+    +UUID id
+    +UUID transactionId
+    +UUID interchangeFeeRuleId
+    +BigDecimal appliedAmount
+    +BigDecimal calculatedRate
+    +String applicationType
+    +DateTime appliedDate
+}
+
+class TransactionSchemeFee {
+    +UUID id
+    +String type
+    +UUID externalId
+    +String eountryCode
+    +BigDecimal eventType
+    +String amount
+    +String schemeProgramId
+    +String currency
+    +LocalDateTime transactionDatetime
+    +String transactionCategoryCode
+    +String[] feeRuleTriggers
+    +UUID schemeFeeEventId
+    +UUID appliedRateStructureId
+    +BigDecimal appliedAmount
+    +BigDecimal appliedRate
+    +String rateType
+    +String applicationType
+    +DateTime appliedDate
+}
+
+' Core Transaction Relationships
+Transaction *-- "1..*" AuditTrail : creates
+Transaction "0..*" -- "0..1" BilateralAgreement : governed by
+
+' Interchange Fee Relationships
+Transaction *-- "1" TransactionInterchangeFee : has interchange fee
+InterchangeFeeRule *-- "0..*" TransactionInterchangeFee : applied through
+BilateralAgreement "0..*" -- "1" InterchangeFeeRule : specifies
+
+' Scheme Fee Structure Relationships
+SchemeFeeEvent *-- "1" SchemeFeeCondition : defines conditions
+SchemeFeeEvent *-- "1..*" SchemeFeeRateStructure : has rate structures
+
+' Rate Detail Relationships
+SchemeFeeRateStructure *-- "0..1" SimpleSchemeRate : simple pricing
+SchemeFeeRateStructure *-- "0..*" TieredSchemeRate : tiered pricing
+
+' Transaction to Scheme Fee Relationships
+Transaction *-- "0..*" TransactionSchemeFee : has scheme fees
+SchemeFeeEvent "1" -- "0..*" TransactionSchemeFee : applied to transactions
+
+note right of SchemeFeeRateStructure
+  A rate structure can have either:
+  - Simple rates (flat/percentage)
+  - Tiered rates (volume-based)
+  - But not both simultaneously
+end note
+
+note top of SchemeFeeEvent
+  Replaces simple SchemeFeeRule
+  with rich Mastercard structure
+end note
+
+note bottom of TransactionSchemeFee
+  Enhanced to capture which
+  rate structure was applied
+  and resulting calculations
+end note
+
+@enduml

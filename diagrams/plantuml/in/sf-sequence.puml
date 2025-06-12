@@ -1,0 +1,75 @@
+@startuml P2S Scheme Fee Calculation Process
+
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam sequenceMessageAlign center
+
+participant "Context Topics" as KafkaIn
+participant "SFC Worker" as SFCWorker  
+participant "Redis Cache" as Cache
+participant "SF Rules Repository" as RuleDB
+participant "Output Topics" as KafkaOut
+participant "Batch Worker" as BatchWorker
+
+== SFC Processing Flow ==
+
+KafkaIn -> SFCWorker: Enriched Transaction
+activate SFCWorker
+
+SFCWorker -> SFCWorker: Validate transaction
+
+SFCWorker -> Cache: Get scheme fee rules
+activate Cache
+
+alt Cache Hit
+    Cache --> SFCWorker: Return precomputed rates
+    deactivate Cache
+else Cache Miss
+    SFCWorker -> RuleDB: Fetch SF rules & active rates
+    activate RuleDB
+    RuleDB --> SFCWorker: Return ruleset with active_rate
+    deactivate RuleDB
+    
+    SFCWorker -> Cache: Cache rules
+    activate Cache
+    Cache --> SFCWorker: Cached
+    deactivate Cache
+end
+
+SFCWorker -> SFCWorker: Calculate scheme fees\n• Apply multiple SF rules (1-to-many)\n• Use precomputed active rates\n• Handle bilateral agreements\n• Apply scheme-specific logic
+
+alt Success
+    SFCWorker -> KafkaOut: Publish to Success Topic\n(with calculated SF fees)
+else Error
+    SFCWorker -> KafkaOut: Publish to Error Topic\n(with error details)
+end
+
+SFCWorker -> SFCWorker: Log for audit
+
+deactivate SFCWorker
+
+== Batch Rate Management ==
+
+note over BatchWorker
+    **Batch Worker (Async):**
+    • Consumes output topics
+    • Aggregates transaction volumes
+    • Computes new tier rates
+    • Updates active_rate in sf_cc tables
+    • Manages rate lifecycle & validity periods
+end note
+
+BatchWorker -> KafkaOut: Consume transaction data
+BatchWorker -> RuleDB: Update active rates & periods
+BatchWorker -> Cache: Invalidate cached rates
+
+note over SFCWorker
+    **Key Features:**
+    • One-to-many SF rule matching
+    • Precomputed active rates (no live tier calc)
+    • Multi-scheme support (MC, Visa, CB, JCB)
+    • Bilateral agreement overrides
+    • Rate lifecycle management
+end note
+
+@enduml

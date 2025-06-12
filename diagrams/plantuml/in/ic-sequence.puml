@@ -1,0 +1,58 @@
+@startuml P2S Interchange Fee Calculation Process
+
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam sequenceMessageAlign center
+
+participant "Context Topics" as KafkaIn
+participant "ICC Worker" as ICCWorker  
+participant "Redis Cache" as Cache
+participant "Rule Repository" as RuleDB
+participant "Output Topics" as KafkaOut
+
+== ICC Processing Flow ==
+
+KafkaIn -> ICCWorker: Enriched Transaction
+activate ICCWorker
+
+ICCWorker -> ICCWorker: Validate transaction
+
+ICCWorker -> Cache: Get interchange rules
+activate Cache
+
+alt Cache Hit
+    Cache --> ICCWorker: Return rules
+    deactivate Cache
+else Cache Miss
+    ICCWorker -> RuleDB: Fetch rules
+    activate RuleDB
+    RuleDB --> ICCWorker: Return ruleset
+    deactivate RuleDB
+    
+    ICCWorker -> Cache: Cache rules
+    activate Cache
+    Cache --> ICCWorker: Cached
+    deactivate Cache
+end
+
+ICCWorker -> ICCWorker: Calculate interchange fee\n• Apply scheme rules\n• Handle FX & currency\n• Process MCC logic\n• Apply overrides
+
+alt Success
+    ICCWorker -> KafkaOut: Publish to Success Topic\n(with calculated fees)
+else Error
+    ICCWorker -> KafkaOut: Publish to Error Topic\n(with error details)
+end
+
+ICCWorker -> ICCWorker: Log for audit
+
+deactivate ICCWorker
+
+note over ICCWorker
+    **Key Features:**
+    • Scheme-specific workers (Visa, MC, CB)
+    • 8-decimal FX precision
+    • Exactly-once processing
+    • Full audit trail
+end note
+
+@enduml

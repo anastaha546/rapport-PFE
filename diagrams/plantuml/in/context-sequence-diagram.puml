@@ -1,0 +1,69 @@
+@startuml P2S Context Qualification Process
+
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 200
+
+participant "Kafka Meta Topics" as KafkaMeta
+participant "CCQ Context Worker" as CCQWorker
+participant "Qualification Service" as QualService
+participant "Context Mapping Repository" as ContextRepo
+participant "Kafka Context Topics" as KafkaContext
+
+== Context Qualification Process ==
+
+KafkaMeta -> CCQWorker: Consume meta qualified message\n(Avro format)
+activate CCQWorker
+
+CCQWorker -> CCQWorker: Validate message structure\n& schema compliance
+
+alt Message Valid
+    CCQWorker -> QualService: Process transaction context
+    activate QualService
+    
+    QualService -> ContextRepo: Fetch context rules & mappings
+    activate ContextRepo
+    
+    ContextRepo --> QualService: Return rules & mapping data
+    deactivate ContextRepo
+    
+    QualService -> QualService: Enrich transaction with derived data:\n• BIN information\n• Issuer/Acquirer country analysis\n• Payment type classification\n• MCC, Terminal type\n• Card product determination\n• Regulatory zone classification\n• Authentication flow analysis
+    
+    QualService -> QualService: Apply context determination:\n• Scheme determination (BIN, AID)\n• Cobranded card logic\n• Payment channel classification\n• Merchant & program profiles
+    
+    QualService -> QualService: Generate normalized\n"qualified transaction context"
+    
+    QualService --> CCQWorker: Return enriched & qualified transaction
+    deactivate QualService
+    
+    CCQWorker -> KafkaContext: Publish enriched message\nto context-related topics
+    
+    note right of KafkaContext
+        Message ready for downstream
+        consumption by:
+        • ICC (Interchange Calculation)
+        • SFC (Scheme Fees Calculation)
+    end note
+    
+else Message Invalid
+    CCQWorker -> CCQWorker: Log validation error
+    CCQWorker -> CCQWorker: send message to dead letter queue
+end
+
+deactivate CCQWorker
+
+== Example Context Enrichment ==
+note over QualService
+    **Example Enrichment Logic:**
+    Input: Issuer Country = "FR", Acquirer Country = "FR"
+    Derived: Transaction Type = "DOMESTIC"
+    
+    Input: BIN = "4xxxxx", AID = "A0000000031010"
+    Derived: Scheme = "VISA", Card Product = "CONSUMER"
+    
+    Input: MCC = "5411", Terminal = "POS"
+    Derived: Merchant Segment = "GROCERY", Channel = "CARD_PRESENT"
+end note
+
+@enduml

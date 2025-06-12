@@ -1,0 +1,167 @@
+@startuml KafkaArchitecture
+!theme blueprint
+skinparam backgroundColor #f8f9fa
+skinparam defaultFontSize 11
+skinparam defaultFontName Arial
+
+' Define custom colors and styles
+skinparam rectangle {
+    BackgroundColor<<worker>> #e3f2fd
+    BorderColor<<worker>> #1976d2
+    FontColor<<worker>> #000000
+}
+
+skinparam rectangle {
+    BackgroundColor<<primaryTopic>> #e8f5e8
+    BorderColor<<primaryTopic>> #388e3c
+    FontColor<<primaryTopic>> #000000
+}
+
+skinparam rectangle {
+    BackgroundColor<<errorTopic>> #ffebee
+    BorderColor<<errorTopic>> #d32f2f
+    FontColor<<errorTopic>> #000000
+}
+
+skinparam database {
+    BackgroundColor<<dataStore>> #f3e5f5
+    BorderColor<<dataStore>> #7b1fa2
+    FontColor<<dataStore>> #000000
+}
+
+skinparam rectangle {
+    BackgroundColor<<external>> #fff3e0
+    BorderColor<<external>> #f57c00
+    FontColor<<external>> #000000
+}
+
+skinparam rectangle {
+    BackgroundColor<<audit>> #fff9c4
+    BorderColor<<audit>> #f9a825
+    FontColor<<audit>> #000000
+}
+
+' Architecture Layout
+package "Kafka Event Streaming Platform" as KafkaLayer {
+    
+    package "Primary Topics" as PrimaryTopics {
+        rectangle "input.raw" as K1 <<primaryTopic>>
+        rectangle "meta.output" as K2 <<primaryTopic>>
+        rectangle "context.output" as K3 <<primaryTopic>>
+        rectangle "ic.output" as K4 <<primaryTopic>>
+        rectangle "sf.output" as K5 <<primaryTopic>>
+        rectangle "audit-trail" as K6 <<audit>>
+        
+        K1 -right-> K2
+        K2 -right-> K3
+        K3 -right-> K4
+        K4 -right-> K5
+    }
+    
+    package "Error Handling Topics" as ErrorTopics {
+        rectangle "input.dlt" as E1 <<errorTopic>>
+        rectangle "meta.failure" as E2 <<errorTopic>>
+        rectangle "context.failure" as E3 <<errorTopic>>
+        rectangle "ic.failure" as E4 <<errorTopic>>
+        rectangle "sf.failure" as E5 <<errorTopic>>
+        
+        E1 -right-> E2
+        E2 -right-> E3
+        E3 -right-> E4
+        E4 -right-> E5
+    }
+}
+
+package "Compute Engine Workers" as ComputeLayer {
+    
+    package "Meta Processing Layer" as MetaLayer {
+        rectangle "Meta Worker" as MW <<worker>>
+        database "BIN Cache" as MW_CACHE <<dataStore>>
+        database "Geo Database" as MW_DB <<dataStore>>
+        
+        MW -down-> MW_CACHE
+        MW -down-> MW_DB
+    }
+    
+    package "Context Processing Layer" as ContextLayer {
+        rectangle "Context Worker" as CW <<worker>>
+        database "Rules Cache" as CW_CACHE <<dataStore>>
+        
+        CW -down-> CW_CACHE
+    }
+    
+    package "Fee Calculation Layer" as FeeLayer {
+        rectangle "IC Worker" as ICW <<worker>>
+        rectangle "SF Worker" as SFW <<worker>>
+        database "Fee Rules Cache" as SHARED_CACHE <<dataStore>>
+        
+        ICW -down-> SHARED_CACHE
+        SFW -down-> SHARED_CACHE
+        ICW -right-> SFW
+    }
+}
+
+package "Data Access Layer" as DataLayer {
+    database "Redis Cache" as REDIS <<dataStore>>
+    database "PostgreSQL" as POSTGRES <<dataStore>>
+    rectangle "Schema Registry" as SCHEMA_REG <<dataStore>>
+    
+    REDIS -right-> POSTGRES
+    POSTGRES -right-> SCHEMA_REG
+}
+
+package "External Systems" as ExternalLayer {
+    rectangle "AI Agents Pipeline" as AI_PIPELINE <<external>>
+    rectangle "Monitoring & Alerts" as MONITORING <<external>>
+    
+    AI_PIPELINE -right-> MONITORING
+}
+
+' Primary Data Flow (solid arrows)
+K1 --> MW : "consume"
+MW --> K2 : "produce"
+MW --> E2 : "error"
+
+K2 --> CW : "consume"
+CW --> K3 : "produce"
+CW --> E3 : "error"
+
+K3 --> ICW : "consume"
+K3 --> SFW : "consume"
+ICW --> K4 : "produce"
+ICW --> E4 : "error"
+SFW --> K5 : "produce"
+SFW --> E5 : "error"
+
+' Audit Trail Flow
+MW --> K6 : "audit"
+CW --> K6 : "audit"
+ICW --> K6 : "audit"
+SFW --> K6 : "audit"
+
+' Cache Dependencies (dotted arrows)
+MW_CACHE ..> REDIS : "backend"
+CW_CACHE ..> REDIS : "backend"
+SHARED_CACHE ..> REDIS : "backend"
+MW_DB ..> POSTGRES : "backend"
+
+' External Dependencies
+AI_PIPELINE ..> POSTGRES : "access"
+POSTGRES ..> SCHEMA_REG : "schema"
+
+' Monitoring Connections
+MW ..> MONITORING : "metrics"
+CW ..> MONITORING : "metrics"
+ICW ..> MONITORING : "metrics"
+SFW ..> MONITORING : "metrics"
+
+' Layout hints for better organization
+MetaLayer -[hidden]right-> ContextLayer
+ContextLayer -[hidden]right-> FeeLayer
+
+PrimaryTopics -[hidden]down-> ErrorTopics
+KafkaLayer -[hidden]down-> ComputeLayer
+ComputeLayer -[hidden]down-> DataLayer
+DataLayer -[hidden]down-> ExternalLayer
+
+@enduml

@@ -1,0 +1,134 @@
+@startuml P2S Interchange Fee Calculation Process
+
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 200
+
+participant "Context Kafka Topics" as KafkaContext
+participant "ICC Subscriber Service" as ICCSubscriber  
+participant "Coordinator" as Coordinator
+participant "ICC Computational Service" as ICCCompute
+participant "Rule Repository" as RuleRepo
+participant "Redis Cache" as RedisCache
+participant "Producer Service" as Producer
+participant "Success Kafka Topic" as SuccessTopic
+participant "Error Kafka Topic" as ErrorTopic
+
+== Interchange Fee Calculation Flow ==
+
+KafkaContext -> ICCSubscriber: ISO20022 Enriched Transaction\n(Avro format)
+activate ICCSubscriber
+
+ICCSubscriber -> Coordinator: Dispatch to execution pool
+activate Coordinator
+
+Coordinator -> ICCCompute: Compute fee
+activate ICCCompute
+
+ICCCompute -> ICCCompute: Validate transaction structure\n& enriched context
+
+alt Transaction Valid
+    
+    ICCCompute -> RedisCache: Retrieve rule
+    activate RedisCache
+    
+    alt Cache Hit
+        RedisCache --> ICCCompute: Return cached rule
+        deactivate RedisCache
+    else Cache Miss
+        ICCCompute -> RuleRepo: Fetch interchange rules\n(scheme-specific)
+        activate RuleRepo
+        RuleRepo --> ICCCompute: Return interchange ruleset
+        deactivate RuleRepo
+        
+        ICCCompute -> RedisCache: Cache rule for future use
+        activate RedisCache
+        RedisCache --> ICCCompute: Rule cached
+        deactivate RedisCache
+    end
+    
+    ICCCompute -> ICCCompute: Apply interchange fee calculation:\n• Multi-currency & FX handling\n• Transaction type logic\n• Scheme & regulatory rules\n• MCC-specific processing\n• Large ticket handling\n• Bilateral agreement overrides
+    
+    alt Calculation Success
+        ICCCompute -> ICCCompute: Generate calculation result\n& audit trail
+        
+        ICCCompute --> Coordinator: Success - Return calculation result
+        deactivate ICCCompute
+        
+        Coordinator -> Producer: Report IC computation result
+        activate Producer
+        
+        Producer -> SuccessTopic: Publish successful transaction\n(with fees & details)
+        
+        note right of SuccessTopic
+            Contains:
+            • Calculated interchange fees
+            • Applied rules reference
+            • FX rates used
+            • Audit trail details
+            • Processing timestamps
+        end note
+        
+        deactivate Producer
+        
+    else Calculation Error
+        ICCCompute -> ICCCompute: Log calculation error\n& generate error details
+        
+        ICCCompute --> Coordinator: Error - Return error details
+        deactivate ICCCompute
+        
+        Coordinator -> Producer: Report transaction to error topic
+        activate Producer
+        
+        Producer -> ErrorTopic: Publish failed transaction\n(with error details)
+        
+        note right of ErrorTopic
+            Contains:
+            • Error category & severity
+            • Root cause analysis
+            • Transaction context
+            • Retry eligibility flag
+            • Failure timestamp
+        end note
+        
+        deactivate Producer
+    end
+    
+else Transaction Invalid
+    ICCCompute -> ICCCompute: Log validation error
+    
+    ICCCompute --> Coordinator: Validation Error
+    deactivate ICCCompute
+    
+    Coordinator -> Producer: Report validation error
+    activate Producer
+    
+    Producer -> ErrorTopic: Publish validation failure
+    deactivate Producer
+end
+
+Coordinator --> ICCSubscriber: Processing complete
+deactivate Coordinator
+
+ICCSubscriber -> ICCSubscriber: Write to journal\n(audit & compliance)
+
+deactivate ICCSubscriber
+
+== Scheme-Specific Processing Notes ==
+note over ICCCompute
+    **Multi-Scheme Support:**
+    • Each ICC worker handles one scheme (Visa, Mastercard, CB, etc.)
+    • Routing determined by upstream Meta worker
+    • Scheme-specific rule application:
+      - Visa: T&E classifications, capped reimbursements
+      - Mastercard: MIF/IFR regulatory overlays
+      - Cartes Bancaires: Domestic French rules
+    
+    **Precision & Compliance:**
+    • FX rates: 8 decimal precision
+    • Idempotency: Exactly-once semantics
+    • Full audit trail for regulatory compliance
+end note
+
+@enduml

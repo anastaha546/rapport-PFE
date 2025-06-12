@@ -1,0 +1,18 @@
+\section*{Abstract}
+%\addcontentsline{toc}{section}{Abstract}
+
+Traditional payment systems often delay fee visibility until after settlement, creating blind spots for financial institutions during transaction authorization. This project addresses that gap by developing a scalable, real-time fee calculation system within the P2S financial platform.
+
+At the core of the solution are four specialized engines: meta qualification, context qualification, scheme fee computation, and interchange fee computation. These engines are built using stateless workers that leverage cost code mechanisms—unique identifiers derived from rule attributes—to efficiently match transactions against standardized fee rules. This design eliminates complex query logic and enables rapid horizontal scaling under high transaction volumes.
+
+While a dedicated data pipeline extracts and normalizes unstructured payment scheme documentation into structured rule sets, this project focuses on the computational layer that enforces those rules during live transaction processing. The architecture is event-driven, integrating with message brokers to deliver fee visibility at the point of authorization—well before clearing and settlement.
+
+By shifting fee calculation from post-settlement to real-time authorization, this approach enhances operational transparency, improves cost awareness, and positions financial institutions for smarter, more responsive decision-making.
+
+\vspace{1cm}
+\begin{flushleft}
+\rule{\textwidth}{0.4pt}\par
+\textbf{Keywords}: Real-time Fee Calculation, Stateless Architecture, Transaction Authorization, Payment Scheme Processing, Pre-clearing Transparency, Cost Code Matching.\par
+\rule[0.55\baselineskip]{\textwidth}{0.4pt}
+\end{flushleft}
+\pagebreak

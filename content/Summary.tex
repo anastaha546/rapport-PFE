@@ -1,0 +1,18 @@
+\section*{Résumé}
+%\addcontentsline{toc}{section}{Résumé}
+
+Les systèmes de paiement traditionnels retardent souvent la visibilité des frais jusqu'après le règlement, créant des angles morts pour les institutions financières lors de l'autorisation des transactions. Ce projet répond à cette lacune en développant un système de calcul de frais en temps réel et évolutif au sein de la plateforme financière P2S.
+
+Au cœur de la solution se trouvent quatre moteurs spécialisés : la qualification méta, la qualification contextuelle, le calcul des frais de schéma et le calcul des frais d'interchange. Ces moteurs sont construits à l'aide de workers sans état qui exploitent des mécanismes de codes de coût—identifiants uniques dérivés des attributs de règles—pour faire correspondre efficacement les transactions aux règles de frais standardisées. Cette conception élimine la logique de requête complexe et permet une mise à l'échelle horizontale rapide sous des volumes de transactions élevés.
+
+Tandis qu'un pipeline de données dédié extrait et normalise la documentation non structurée des schémas de paiement en ensembles de règles structurées, ce projet se concentre sur la couche computationnelle qui applique ces règles lors du traitement des transactions en direct. L'architecture est pilotée par les événements, s'intégrant avec des courtiers de messages pour fournir une visibilité des frais au point d'autorisation—bien avant la compensation et le règlement.
+
+En déplaçant le calcul des frais du post-règlement vers l'autorisation en temps réel, cette approche améliore la transparence opérationnelle, renforce la conscience des coûts et positionne les institutions financières pour une prise de décision plus intelligente et plus réactive.
+
+\vspace{1cm}
+\begin{flushleft}
+\rule{\textwidth}{0.4pt}\par
+\textbf{Mots-clés} : Calcul de Frais en Temps Réel, Architecture Sans État, Autorisation de Transaction, Traitement de Schéma de Paiement, Transparence Pré-compensation, Correspondance de Code de Coût.\par
+\rule[0.55\baselineskip]{\textwidth}{0.4pt}
+\end{flushleft}
+\pagebreak
