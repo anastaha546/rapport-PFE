@@ -25,6 +25,9 @@
 \usepackage[top=.75in, left=.75in, right=.75in, bottom=1in]{geometry}
 \usepackage{nameref}
 
+%prevent overflow of figures
+\usepackage{placeins}
+
 % Table colors
 \definecolor{lightpink}{HTML}{FFB6C1}
 \definecolor{lightorange}{HTML}{FFD7B4}
@@ -59,8 +62,7 @@
 \usepackage{indentfirst}
 
 \newcommand{\coursename}{GL}
-\newcommand{\reporttitle}{Implementation of Stateless 
-Event-Driven Architecture for P2S Multi-Scheme Fee Computation Worker}
+\newcommand{\reporttitle}{Implementation of event driven P2S Compute Engines}
 \newcommand{\studentname}{ANAS TAHA}
 \newcommand{\teachername}{Mr. RACHID OULAD HAJ THAMI (ENSIAS)\\ Mr. ABDELKHALEK ABRIL (Effyis)}
 \newcommand{\jurymembers}{...}
@@ -104,6 +106,8 @@ Event-Driven Architecture for P2S Multi-Scheme Fee Computation Worker}
 \input{content/chp1}
 \input{content/chp2}
 \input{content/chp3}
+\input{content/chp4}
+\input{content/chp5}
 
 \input{content/conclusion}
 \input{ref/ref.tex}

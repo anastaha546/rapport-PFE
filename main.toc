@@ -1,0 +1,223 @@
+\xpg@aux {}{english}
+\contentsline {chapter}{General Introduction}{11}{section*.8}%
+\contentsline {chapter}{\numberline {1}Project Framework and Methodology}{12}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction}{13}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Project Context and Motivation}{13}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Current Challenges in Fee Processing}{13}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Business Impact}{14}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Solution Approach}{14}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Presentation of the Host Organization}{15}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Organizational Structure}{15}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Business Divisions}{15}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Industry Specialization}{15}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Key Products}{16}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.5}Company Profile}{16}{subsection.1.3.5}%
+\contentsline {section}{\numberline {1.4}Problem Statement}{16}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Primary Problem}{16}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Business Impact}{17}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Technical Challenges}{17}{subsection.1.4.3}%
+\contentsline {section}{\numberline {1.5}Project Scope}{18}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Project Framework Context}{18}{subsection.1.5.1}%
+\contentsline {subsubsection}{Rule Normalization Framework}{18}{section*.9}%
+\contentsline {subsubsection}{Stateless Computational Engine Architecture}{18}{section*.10}%
+\contentsline {subsection}{\numberline {1.5.2}Internship Project Focus}{18}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Project Boundaries}{18}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}Project Constraints and Key Assumptions}{19}{subsection.1.5.4}%
+\contentsline {section}{\numberline {1.6}Project Charter}{19}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Project Objectives}{20}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Project Deliverables}{20}{subsection.1.6.2}%
+\contentsline {section}{\numberline {1.7}Project Requirements}{20}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}Functional Requirements}{20}{subsection.1.7.1}%
+\contentsline {subsubsection}{Core Processing Capabilities}{20}{section*.11}%
+\contentsline {subsection}{\numberline {1.7.2}Non-Functional Requirements}{21}{subsection.1.7.2}%
+\contentsline {subsubsection}{Performance Characteristics}{21}{section*.12}%
+\contentsline {subsubsection}{Quality Attributes}{21}{section*.13}%
+\contentsline {section}{\numberline {1.8}Project Management}{21}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Project Conduct}{21}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Project Methodology}{22}{subsection.1.8.2}%
+\contentsline {subsection}{\numberline {1.8.3}Why Scrum}{22}{subsection.1.8.3}%
+\contentsline {subsection}{\numberline {1.8.4}Team Structure and Roles}{23}{subsection.1.8.4}%
+\contentsline {subsubsection}{Core Scrum Roles}{23}{section*.14}%
+\contentsline {subsubsection}{Specialized Technical Roles}{23}{section*.15}%
+\contentsline {subsubsection}{Team Collaboration Framework}{24}{section*.16}%
+\contentsline {subsection}{\numberline {1.8.5}Project Schedule and Timeline}{24}{subsection.1.8.5}%
+\contentsline {subsubsection}{Sprint Structure and Ceremonies}{26}{section*.17}%
+\contentsline {subsection}{\numberline {1.8.6}Product Backlog}{26}{subsection.1.8.6}%
+\contentsline {subsubsection}{Epic-Level Organization}{26}{section*.18}%
+\contentsline {subsubsection}{User Story Structure}{28}{section*.19}%
+\contentsline {subsubsection}{Acceptance Criteria Framework}{29}{section*.20}%
+\contentsline {subsection}{\numberline {1.8.7}Priorities}{29}{subsection.1.8.7}%
+\contentsline {subsubsection}{Priority Framework}{29}{section*.21}%
+\contentsline {subsubsection}{Dynamic Priority Adjustment}{29}{section*.22}%
+\contentsline {subsection}{\numberline {1.8.8}Quality Assurance and Testing Strategy}{30}{subsection.1.8.8}%
+\contentsline {subsection}{\numberline {1.8.9}Risk Management}{30}{subsection.1.8.9}%
+\contentsline {subsubsection}{Technical Risks}{30}{section*.23}%
+\contentsline {subsubsection}{Operational Risks}{30}{section*.24}%
+\contentsline {subsection}{\numberline {1.8.10}Project Milestones}{30}{subsection.1.8.10}%
+\contentsline {section}{\numberline {1.9}System Architecture}{31}{section.1.9}%
+\contentsline {subsection}{\numberline {1.9.1}Ecosystem Overview}{31}{subsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.9.2}AI Agents Pipeline Integration}{32}{subsection.1.9.2}%
+\contentsline {subsection}{\numberline {1.9.3}P2S Compute Engines Architecture}{33}{subsection.1.9.3}%
+\contentsline {subsubsection}{Architectural Design Principles}{33}{section*.25}%
+\contentsline {subsubsection}{Core Compute Engine Components}{34}{section*.26}%
+\contentsline {subsubsection}{Data Flow and Processing Pipeline}{36}{section*.27}%
+\contentsline {subsubsection}{Scalability and Performance Architecture}{37}{section*.28}%
+\contentsline {subsubsection}{Reliability and Error Handling}{37}{section*.29}%
+\contentsline {section}{\numberline {1.10}Technical Stack}{38}{section.1.10}%
+\contentsline {subsection}{\numberline {1.10.1}Core Development Platform}{38}{subsection.1.10.1}%
+\contentsline {subsection}{\numberline {1.10.2}Data Management}{38}{subsection.1.10.2}%
+\contentsline {subsection}{\numberline {1.10.3}Event Processing}{38}{subsection.1.10.3}%
+\contentsline {subsection}{\numberline {1.10.4}Development Operations}{39}{subsection.1.10.4}%
+\contentsline {section}{\numberline {1.11}Chapter Conclusion}{39}{section.1.11}%
+\contentsline {chapter}{\numberline {2}Payment Industry and Domain Analysis}{40}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{41}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Payment Industry Overview}{41}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Industry Structure and Scale}{41}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Regulatory Framework}{42}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Transaction Lifecycle and Processing}{42}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Transaction Phases}{42}{subsection.2.3.1}%
+\contentsline {subsubsection}{Authorization Phase}{43}{section*.30}%
+\contentsline {subsubsection}{Clearing Phase}{43}{section*.31}%
+\contentsline {subsubsection}{Settlement Phase}{44}{section*.32}%
+\contentsline {subsection}{\numberline {2.3.2}Processing Complexity Factors}{44}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Ecosystem Participants and Relationships}{44}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Primary Participants}{45}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Issuer Role and Responsibilities}{45}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Acquirer Role and Responsibilities}{46}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Payment Network Role and Responsibilities}{46}{subsection.2.4.4}%
+\contentsline {section}{\numberline {2.5}Fee Structures and Economic Models}{47}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Multi-Party Fee Structure}{47}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Interchange Fee Structures}{47}{subsection.2.5.2}%
+\contentsline {subsubsection}{Qualification Dimensions}{47}{section*.33}%
+\contentsline {subsubsection}{Regulatory Constraints}{48}{section*.34}%
+\contentsline {subsection}{\numberline {2.5.3}Scheme Fee Structures}{48}{subsection.2.5.3}%
+\contentsline {subsubsection}{Cost Code Methodologies}{48}{section*.35}%
+\contentsline {subsubsection}{Fee Calculation Complexity}{48}{section*.36}%
+\contentsline {section}{\numberline {2.6}Messaging Architectures and Technical Infrastructure}{49}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Messaging System Types}{49}{subsection.2.6.1}%
+\contentsline {subsubsection}{Single Messaging System (SMS)}{49}{section*.37}%
+\contentsline {subsubsection}{Dual Messaging System (DMS)}{50}{section*.38}%
+\contentsline {subsection}{\numberline {2.6.2}Technical Standards and Protocols}{50}{subsection.2.6.2}%
+\contentsline {subsubsection}{ISO Standards}{50}{section*.39}%
+\contentsline {subsubsection}{Network-Specific Standards}{50}{section*.40}%
+\contentsline {section}{\numberline {2.7}Current Challenges in Fee Processing}{51}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Structural Complexity Challenges}{51}{subsection.2.7.1}%
+\contentsline {subsubsection}{Documentation Heterogeneity}{51}{section*.41}%
+\contentsline {subsubsection}{Rule Complexity}{51}{section*.42}%
+\contentsline {subsection}{\numberline {2.7.2}Computational Limitations}{52}{subsection.2.7.2}%
+\contentsline {subsubsection}{Performance Degradation}{52}{section*.43}%
+\contentsline {subsubsection}{Architectural Constraints}{52}{section*.44}%
+\contentsline {subsection}{\numberline {2.7.3}Operational Impact}{52}{subsection.2.7.3}%
+\contentsline {subsubsection}{Cost Implications}{52}{section*.45}%
+\contentsline {subsubsection}{Risk Factors}{53}{section*.46}%
+\contentsline {section}{\numberline {2.8}Market Dynamics and Evolution}{53}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Technological Trends}{53}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Regulatory Evolution}{53}{subsection.2.8.2}%
+\contentsline {section}{\numberline {2.9}Chapter Conclusion}{54}{section.2.9}%
+\contentsline {chapter}{\numberline {3}Analysis and Design}{55}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Analysis of the Existing System}{56}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Theoretical Foundation: Event-Driven Architecture}{57}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Event-Driven Architecture Principles}{57}{subsection.3.2.1}%
+\contentsline {subsubsection}{Core EDA Concepts}{57}{section*.47}%
+\contentsline {subsection}{\numberline {3.2.2}EDA Benefits for Financial Processing}{57}{subsection.3.2.2}%
+\contentsline {subsubsection}{Scalability and Performance Benefits}{57}{section*.48}%
+\contentsline {subsubsection}{Resilience and Fault Tolerance Benefits}{57}{section*.49}%
+\contentsline {subsection}{\numberline {3.2.3}Technology Selection Analysis}{58}{subsection.3.2.3}%
+\contentsline {subsubsection}{Apache Kafka Selection Rationale}{58}{section*.50}%
+\contentsline {section}{\numberline {3.3}Solution Architecture Design}{58}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Microservices Architecture Selection}{58}{subsection.3.3.1}%
+\contentsline {subsubsection}{Domain-Driven Design Alignment}{58}{section*.51}%
+\contentsline {subsubsection}{Stateless Processing Design}{59}{section*.52}%
+\contentsline {section}{\numberline {3.4}System Design and UML Modeling}{59}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Class Diagram Analysis}{59}{subsection.3.4.1}%
+\contentsline {subsubsection}{Class Diagram Analysis}{60}{section*.53}%
+\contentsline {subsection}{\numberline {3.4.2}Use Case Diagram Analysis}{61}{subsection.3.4.2}%
+\contentsline {subsubsection}{Actor and Use Case Analysis}{62}{section*.54}%
+\contentsline {subsection}{\numberline {3.4.3}Sequence Diagram Analysis}{63}{subsection.3.4.3}%
+\contentsline {subsubsection}{Context Qualification Sequence Diagram}{63}{section*.55}%
+\contentsline {subsubsection}{Interchange Calculation Sequence Diagram}{65}{section*.56}%
+\contentsline {subsubsection}{Scheme Fees Calculation Sequence Diagram}{67}{section*.57}%
+\contentsline {subsection}{\numberline {3.4.4}Design Pattern Integration}{69}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}Architecture Design Summary}{70}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Design Decision Validation}{70}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Technology Integration Analysis}{70}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}UML Model Insights}{71}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Design Pattern Implementation}{71}{subsection.3.5.4}%
+\contentsline {section}{\numberline {3.6}Chapter Conclusion}{72}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Implementation and Validation}{73}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Technology Stack and Rationale}{74}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Core Technology Selection}{74}{subsection.4.1.1}%
+\contentsline {subsubsection}{Financial Processing Requirements}{74}{section*.58}%
+\contentsline {section}{\numberline {4.2}Architecture Implementation}{74}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Stateless Engine Pattern Implementation}{74}{subsection.4.2.1}%
+\contentsline {subsubsection}{State Externalization Strategy}{75}{section*.59}%
+\contentsline {subsubsection}{Event-Driven Communication Implementation}{75}{section*.60}%
+\contentsline {subsection}{\numberline {4.2.2}Fee Calculation Engine Implementation}{76}{subsection.4.2.2}%
+\contentsline {subsubsection}{Meta Worker Engine - Transaction Enrichment}{76}{section*.61}%
+\contentsline {subsubsection}{Context Qualification Engine - Business Rule Processing}{76}{section*.62}%
+\contentsline {subsubsection}{Interchange Calculation Engine - Bilateral Fee Processing}{77}{section*.63}%
+\contentsline {subsubsection}{Scheme Fee Calculation Engine - Network Fee Processing}{77}{section*.64}%
+\contentsline {section}{\numberline {4.3}Performance Validation and Testing}{78}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Test Strategy and Methodology}{78}{subsection.4.3.1}%
+\contentsline {subsubsection}{Test Environment Specification}{78}{section*.65}%
+\contentsline {subsubsection}{Load Testing Implementation}{78}{section*.66}%
+\contentsline {subsection}{\numberline {4.3.2}Performance Test Results Analysis}{79}{subsection.4.3.2}%
+\contentsline {subsubsection}{Throughput and Latency Analysis}{79}{section*.67}%
+\contentsline {subsubsection}{Performance Analysis and Bottleneck Identification}{80}{section*.68}%
+\contentsline {subsection}{\numberline {4.3.3}Functional Validation Testing}{81}{subsection.4.3.3}%
+\contentsline {subsubsection}{Fee Calculation Accuracy Validation}{81}{section*.69}%
+\contentsline {subsubsection}{End-to-End Transaction Processing Validation}{81}{section*.70}%
+\contentsline {section}{\numberline {4.4}Deployment Architecture Design}{82}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Proposed Production Deployment Strategy}{82}{subsection.4.4.1}%
+\contentsline {subsubsection}{Multi-Zone High Availability Design}{82}{section*.71}%
+\contentsline {subsection}{\numberline {4.4.2}Container Orchestration and Scaling}{83}{subsection.4.4.2}%
+\contentsline {subsubsection}{Kubernetes Deployment Strategy}{83}{section*.72}%
+\contentsline {subsubsection}{Proposed CI/CD Pipeline Design}{83}{section*.73}%
+\contentsline {section}{\numberline {4.5}Results Analysis and Business Impact}{83}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Proof-of-Concept Success Metrics}{83}{subsection.4.5.1}%
+\contentsline {subsubsection}{Technical Achievement Analysis}{83}{section*.74}%
+\contentsline {subsubsection}{Production Readiness Assessment}{83}{section*.75}%
+\contentsline {subsection}{\numberline {4.5.2}Business Value and Strategic Impact}{84}{subsection.4.5.2}%
+\contentsline {subsubsection}{Effyis Group Value Proposition}{84}{section*.76}%
+\contentsline {section}{\numberline {4.6}Lessons Learned and Future Optimization}{85}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Implementation Insights}{85}{subsection.4.6.1}%
+\contentsline {subsubsection}{Architectural Decisions Validation}{85}{section*.77}%
+\contentsline {subsection}{\numberline {4.6.2}Production Development Roadmap}{85}{subsection.4.6.2}%
+\contentsline {subsubsection}{Short-Term Optimizations (3-6 months)}{85}{section*.78}%
+\contentsline {subsubsection}{Long-Term Enhancements (6-12 months)}{85}{section*.79}%
+\contentsline {section}{\numberline {4.7}Chapter Conclusion}{86}{section.4.7}%
+\contentsline {chapter}{\numberline {5}Limitations, Challenges, and Critical Analysis}{87}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Technical Limitations and Constraints}{88}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Data Model Instability and Integration Challenges}{88}{subsection.5.1.1}%
+\contentsline {subsubsection}{Input Schema Evolution Challenges}{88}{section*.80}%
+\contentsline {subsubsection}{Fee Calculation Data Completeness}{88}{section*.81}%
+\contentsline {subsection}{\numberline {5.1.2}Infrastructure and Resource Constraints}{89}{subsection.5.1.2}%
+\contentsline {subsubsection}{Development Environment Limitations}{89}{section*.82}%
+\contentsline {subsubsection}{Technology Stack Maturity Constraints}{89}{section*.83}%
+\contentsline {section}{\numberline {5.2}Organizational and Process Limitations}{90}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Requirements Engineering Challenges}{90}{subsection.5.2.1}%
+\contentsline {subsubsection}{Agile Process Maturity Assessment}{90}{section*.84}%
+\contentsline {subsubsection}{Domain Expertise Integration}{90}{section*.85}%
+\contentsline {subsection}{\numberline {5.2.2}Technology Decision Making Process}{91}{subsection.5.2.2}%
+\contentsline {subsubsection}{Architecture Review Methodology}{91}{section*.86}%
+\contentsline {section}{\numberline {5.3}Design Decision Defense and Justification}{91}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Architectural Choices Under Constraints}{91}{subsection.5.3.1}%
+\contentsline {subsubsection}{Stateless Architecture Justification}{91}{section*.87}%
+\contentsline {subsubsection}{Technology Stack Validation}{92}{section*.88}%
+\contentsline {subsection}{\numberline {5.3.2}Implementation Strategy Defense}{92}{subsection.5.3.2}%
+\contentsline {subsubsection}{Proof-of-Concept Scope Management}{92}{section*.89}%
+\contentsline {section}{\numberline {5.4}Improvement Opportunities and Recommendations}{92}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Technical Enhancement Opportunities}{92}{subsection.5.4.1}%
+\contentsline {subsubsection}{Performance Optimization Potential}{92}{section*.90}%
+\contentsline {subsubsection}{Architecture Evolution Recommendations}{93}{section*.91}%
+\contentsline {subsection}{\numberline {5.4.2}Process and Organizational Recommendations}{93}{subsection.5.4.2}%
+\contentsline {subsubsection}{Requirements Engineering Enhancement}{93}{section*.92}%
+\contentsline {subsubsection}{Technology Governance Enhancement}{94}{section*.93}%
+\contentsline {section}{\numberline {5.5}Risk Mitigation and Lessons Learned}{94}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Technical Risk Assessment}{94}{subsection.5.5.1}%
+\contentsline {subsubsection}{Identified Risk Factors}{94}{section*.94}%
+\contentsline {subsubsection}{Mitigation Strategy Effectiveness}{94}{section*.95}%
+\contentsline {subsection}{\numberline {5.5.2}Project Management Insights}{94}{subsection.5.5.2}%
+\contentsline {subsubsection}{Agile Methodology Adaptation}{94}{section*.96}%
+\contentsline {section}{\numberline {5.6}Chapter Conclusion}{95}{section.5.6}%
+\contentsline {section}{Conclusion and Perspectives}{96}{section*.97}%

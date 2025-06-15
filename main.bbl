@@ -16,5 +16,104 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{bis2018payment}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=0c39aae51737b6bfb6c5b9de5963c7bf}{%
+           family={{Bank for International Settlements}},
+           familyi={B\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {Committee on Payments}%
+        {Market Infrastructures}%
+      }
+      \strng{namehash}{0c39aae51737b6bfb6c5b9de5963c7bf}
+      \strng{fullhash}{0c39aae51737b6bfb6c5b9de5963c7bf}
+      \strng{fullhashraw}{0c39aae51737b6bfb6c5b9de5963c7bf}
+      \strng{bibnamehash}{0c39aae51737b6bfb6c5b9de5963c7bf}
+      \strng{authorbibnamehash}{0c39aae51737b6bfb6c5b9de5963c7bf}
+      \strng{authornamehash}{0c39aae51737b6bfb6c5b9de5963c7bf}
+      \strng{authorfullhash}{0c39aae51737b6bfb6c5b9de5963c7bf}
+      \strng{authorfullhashraw}{0c39aae51737b6bfb6c5b9de5963c7bf}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{191}
+      \field{title}{Payment aspects of financial inclusion in the fintech era}
+      \field{type}{techreport}
+      \field{year}{2018}
+    \endentry
+    \entry{hohpe2003enterprise}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=2ed2f5feceafdf9a03a27134da39d3d0}{%
+           family={Hohpe},
+           familyi={H\bibinitperiod},
+           given={Gregor},
+           giveni={G\bibinitperiod}}}%
+        {{hash=8ea1767d5a1edce116c79b82a83c54da}{%
+           family={Woolf},
+           familyi={W\bibinitperiod},
+           given={Bobby},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{ddf3be6dfde807c1811cbd3352154f04}
+      \strng{fullhash}{ddf3be6dfde807c1811cbd3352154f04}
+      \strng{fullhashraw}{ddf3be6dfde807c1811cbd3352154f04}
+      \strng{bibnamehash}{ddf3be6dfde807c1811cbd3352154f04}
+      \strng{authorbibnamehash}{ddf3be6dfde807c1811cbd3352154f04}
+      \strng{authornamehash}{ddf3be6dfde807c1811cbd3352154f04}
+      \strng{authorfullhash}{ddf3be6dfde807c1811cbd3352154f04}
+      \strng{authorfullhashraw}{ddf3be6dfde807c1811cbd3352154f04}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Enterprise integration patterns: Designing, building, and deploying messaging solutions}
+      \field{year}{2003}
+    \endentry
+    \entry{narkhede2017kafka}{book}{}{}
+      \name{author}{3}{}{%
+        {{hash=f0758f2b7b5ca25d25bfae9f9629d17d}{%
+           family={Narkhede},
+           familyi={N\bibinitperiod},
+           given={Neha},
+           giveni={N\bibinitperiod}}}%
+        {{hash=4c6d986bebd5ca286093056f4b36a830}{%
+           family={Shapira},
+           familyi={S\bibinitperiod},
+           given={Gwen},
+           giveni={G\bibinitperiod}}}%
+        {{hash=5a2bbe9f272098051a7ed233d740d5f6}{%
+           family={Palino},
+           familyi={P\bibinitperiod},
+           given={Todd},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly Media}%
+      }
+      \strng{namehash}{6956bcba03f1a99a2d2fcb3ecc6b38a2}
+      \strng{fullhash}{6956bcba03f1a99a2d2fcb3ecc6b38a2}
+      \strng{fullhashraw}{6956bcba03f1a99a2d2fcb3ecc6b38a2}
+      \strng{bibnamehash}{6956bcba03f1a99a2d2fcb3ecc6b38a2}
+      \strng{authorbibnamehash}{6956bcba03f1a99a2d2fcb3ecc6b38a2}
+      \strng{authornamehash}{6956bcba03f1a99a2d2fcb3ecc6b38a2}
+      \strng{authorfullhash}{6956bcba03f1a99a2d2fcb3ecc6b38a2}
+      \strng{authorfullhashraw}{6956bcba03f1a99a2d2fcb3ecc6b38a2}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Kafka: The definitive guide: Real-time data and stream processing at scale}
+      \field{year}{2017}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

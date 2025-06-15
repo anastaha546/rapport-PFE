@@ -1,0 +1,26 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces \xpg@aux {}{english}Project Timeline - Gantt Diagram}}{25}{figure.1.1}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces \xpg@aux {}{english}P2S Ecosystem Architecture Overview}}{32}{figure.1.2}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces \xpg@aux {}{english}AI Agents Pipeline - Data Source for Compute Engines}}{33}{figure.1.3}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces \xpg@aux {}{english}P2S Compute Engines Detailed Architecture}}{34}{figure.1.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces \xpg@aux {}{english}Payment Transaction Lifecycle}}{43}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces \xpg@aux {}{english}Payment Ecosystem Participants and Fee Flow}}{45}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces \xpg@aux {}{english}Single and Dual Messaging Systems}}{49}{figure.2.3}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \xpg@aux {}{english}UML Class Diagram for P2S Compute Engines}}{60}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces \xpg@aux {}{english}Use Case Diagram for P2S Compute Engines}}{62}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces \xpg@aux {}{english}Context Qualification Sequence Diagram}}{64}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces \xpg@aux {}{english}Interchange Calculation Sequence Diagram}}{66}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces \xpg@aux {}{english}Scheme Fees Calculation Sequence Diagram}}{68}{figure.3.5}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \xpg@aux {}{english}Kafka Listener Configuration - Stateless Pattern Implementation}}{75}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \xpg@aux {}{english}Meta Worker Engine - Transaction Enrichment Process}}{76}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \xpg@aux {}{english}Context Qualification Engine - Business Rule Application}}{77}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \xpg@aux {}{english}Interchange Calculation Engine - Fee Computation Process}}{77}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \xpg@aux {}{english}Scheme Fee Calculation Engine - Cost Code Resolution}}{78}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \xpg@aux {}{english}Load Testing Execution - xK6-Kafka Framework}}{79}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \xpg@aux {}{english}Performance Test Results Summary}}{80}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \xpg@aux {}{english}Detailed Performance Metrics Analysis}}{81}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces \xpg@aux {}{english}Multi-Zone Deployment Architecture}}{82}{figure.4.9}%
+\addvspace {10\p@ }

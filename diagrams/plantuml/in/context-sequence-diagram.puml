@@ -5,11 +5,13 @@ skinparam backgroundColor #FFFFFF
 skinparam sequenceMessageAlign center
 skinparam maxMessageSize 200
 
-participant "Kafka Meta Topics" as KafkaMeta
-participant "CCQ Context Worker" as CCQWorker
-participant "Qualification Service" as QualService
+participant "Meta Output Topic" as KafkaMeta
+participant "Context Qualification Engine" as CCQWorker
+participant "Rule Evaluation Service" as QualService
 participant "Context Mapping Repository" as ContextRepo
-participant "Kafka Context Topics" as KafkaContext
+participant "Redis Cache" as Cache
+participant "Context Output Topic" as KafkaContext
+participant "Error Topic" as ErrorTopic
 
 == Context Qualification Process ==
 
@@ -22,11 +24,24 @@ alt Message Valid
     CCQWorker -> QualService: Process transaction context
     activate QualService
     
-    QualService -> ContextRepo: Fetch context rules & mappings
-    activate ContextRepo
+    QualService -> Cache: Check for cached rules
+    activate Cache
     
-    ContextRepo --> QualService: Return rules & mapping data
-    deactivate ContextRepo
+    alt Cache Hit
+        Cache --> QualService: Return cached rules
+        deactivate Cache
+    else Cache Miss
+        QualService -> ContextRepo: Fetch context rules & mappings
+        activate ContextRepo
+        
+        ContextRepo --> QualService: Return rules & mapping data
+        deactivate ContextRepo
+        
+        QualService -> Cache: Cache rules for future use
+        activate Cache
+        Cache --> QualService: Confirmation
+        deactivate Cache
+    end
     
     QualService -> QualService: Enrich transaction with derived data:\n• BIN information\n• Issuer/Acquirer country analysis\n• Payment type classification\n• MCC, Terminal type\n• Card product determination\n• Regulatory zone classification\n• Authentication flow analysis
     
@@ -48,7 +63,13 @@ alt Message Valid
     
 else Message Invalid
     CCQWorker -> CCQWorker: Log validation error
-    CCQWorker -> CCQWorker: send message to dead letter queue
+    CCQWorker -> ErrorTopic: Send to dead letter queue
+    
+    note right of ErrorTopic
+        Invalid messages routed to
+        error topic for analysis
+        and potential reprocessing
+    end note
 end
 
 deactivate CCQWorker

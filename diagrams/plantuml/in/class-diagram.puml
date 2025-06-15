@@ -1,190 +1,171 @@
 @startuml
 skinparam classAttributeIconSize 0
 skinparam backgroundColor #f8f9fa
+skinparam linetype ortho
+skinparam minlen 3
+skinparam nodesep 80
+skinparam ranksep 60
+skinparam class {
+    BackgroundColor #ffffff
+    BorderColor #d1d5db
+}
+
+' Central Transaction
+class Transaction {
+    +UUID id
+    +String externalId
+    +BigDecimal amount
+    +String currency
+    +DateTime transactionDateTime
+    +String merchantId
+    +String mcc
+    +String cardScheme
+    +String cardProduct
+    +String issuerBin
+    +String issuerId
+    +String acquirerId
+}
+
+' Context above Transaction
+class TransactionContext {
+    +UUID transactionId
+    +String issuerCountry
+    +String acquirerCountry
+    +String merchantCountry
+    +String transactionType
+    +Boolean cardPresent
+    +Boolean crossBorder
+    +String channelType
+}
+
+' Interchange Fee - Left vertical column
+class TransactionInterchangeFee {
+    +UUID id
+    +UUID transactionId
+    +BigDecimal appliedAmount
+    +BigDecimal appliedRate
+    +BigDecimal appliedPerItemFee
+    +String calculationSource
+    +DateTime appliedDateTime
+}
 
 class InterchangeFeeRule {
     +UUID id
     +String interchangeCode
-    +String interchangeType
-    +String feeCurrency
-    +BigDecimal fixedRate
-    +BigDecimal maxFeeRate
-    +BigDecimal minFeeRate
-    +Date createdDate
-    +Date updatedDate
-}
-
-class SchemeFeeEvent {
-    +UUID id
-    +String eventId
-    +String eventName
-    +String serviceId
-    +String serviceName
-    +String documentName
-    +String sourceText
-    +String schemeType
-    +Long transactionCostCode
-    +Date createdDate
-    +Date updatedDate
-}
-
-class SchemeFeeCondition {
-    +UUID id
-    +UUID schemeFeeEventId
-    +String cardScheme
-    +String billedEntity
-    +String disputeReasons
-    +String paymentMethods
-    +String transactionClass
-    +String transactionPhase
-    +String transactionTypes
-    +String triggeringAction
-    +String processingNetwork
-    +String transactionStatus
-    +String transactionChannel
-    +String transactionRegions
-    +String messagingSystemType
-    +String transactionTechnology
-}
-
-class SchemeFeeRateStructure {
-    +UUID id
-    +UUID schemeFeeEventId
-    +String basis
-    +String rateType
-    +BigDecimal maxCharge
-    +BigDecimal minCharge
-    +String maxChargeCurrency
-    +String minChargeCurrency
-}
-
-class SimpleSchemeRate {
-    +UUID id
-    +UUID rateStructureId
-    +String currency
-    +BigDecimal flatAmount
-    +BigDecimal percentAmount
-    +String issuerRegion
-    +String acquirerRegion
-}
-
-class TieredSchemeRate {
-    +UUID id
-    +UUID rateStructureId
-    +Integer tierOrder
-    +BigDecimal startingValue
-    +BigDecimal endingValue
-    +String rateCurrency
-    +BigDecimal rateFlatAmount
-    +BigDecimal ratePercentAmount
-    +String rateIssuerRegion
-    +String rateAcquirerRegion
-}
-
-class Transaction {
-    +UUID id
-    +String authorizationCostCode
-    +String eventType
-    +String schemeProgramId
-    +DateTime creationDatetime
-    +String transactionCategoryCode
-    +String type
-    +String externalID
-    +String countryCode
-    +String status
-    +BigDecimal amount
-    +String currency
-    +UUID bilateralAgreementId
-}
-
-class AuditTrail {
-    +UUID id
-    +String eventType
-    +UUID transactionId
-    +DateTime timestamp
-    +String oldValue
-    +String newValue
-    +String changedBy
+    +String cardCategory
+    +String merchantCategory
+    +String transactionType
+    +BigDecimal adValoremRate
+    +BigDecimal perItemFee
+    +BigDecimal capAmount
+    +BigDecimal floorAmount
 }
 
 class BilateralAgreement {
     +UUID id
     +String issuerId
     +String acquirerId
-    +UUID interchangeFeeRuleId
+    +String cardScheme
+    +BigDecimal overrideAdValoremRate
+    +BigDecimal overridePerItemFee
+    +BigDecimal overrideCapAmount
     +Date effectiveDate
     +Date expiryDate
-    +String status
+    +Boolean active
 }
 
-class TransactionInterchangeFee {
-    +UUID id
-    +UUID transactionId
-    +UUID interchangeFeeRuleId
-    +BigDecimal appliedAmount
-    +BigDecimal calculatedRate
-    +String applicationType
-    +DateTime appliedDate
-}
-
+' Scheme Fee - Right vertical column
 class TransactionSchemeFee {
     +UUID id
-    +String type
-    +UUID externalId
-    +String eountryCode
-    +BigDecimal eventType
-    +String amount
-    +String schemeProgramId
-    +String currency
-    +LocalDateTime transactionDatetime
-    +String transactionCategoryCode
-    +String[] feeRuleTriggers
-    +UUID schemeFeeEventId
-    +UUID appliedRateStructureId
+    +UUID transactionId
+    +UUID ruleId
+    +String feeType
     +BigDecimal appliedAmount
     +BigDecimal appliedRate
-    +String rateType
-    +String applicationType
-    +DateTime appliedDate
+    +DateTime appliedDateTime
 }
 
-' Core Transaction Relationships
-Transaction *-- "1..*" AuditTrail : creates
-Transaction "0..*" -- "0..1" BilateralAgreement : governed by
+class SchemeFeeRule {
+    +UUID id
+    +String feeCode
+    +String feeName
+    +String cardScheme
+    +String eventTrigger
+    +String applicabilityCondition
+    +Boolean active
+}
 
-' Interchange Fee Relationships
-Transaction *-- "1" TransactionInterchangeFee : has interchange fee
-InterchangeFeeRule *-- "0..*" TransactionInterchangeFee : applied through
-BilateralAgreement "0..*" -- "1" InterchangeFeeRule : specifies
+class SchemeFeeRate {
+    +UUID id
+    +UUID ruleId
+    +String rateType
+    +String currency
+    +BigDecimal flatAmount
+    +BigDecimal percentageRate
+    +BigDecimal minimumFee
+    +BigDecimal maximumFee
+    +Integer tierLevel
+    +BigDecimal tierThresholdFrom
+    +BigDecimal tierThresholdTo
+}
 
-' Scheme Fee Structure Relationships
-SchemeFeeEvent *-- "1" SchemeFeeCondition : defines conditions
-SchemeFeeEvent *-- "1..*" SchemeFeeRateStructure : has rate structures
+' Enhanced layout control with more separation
+TransactionContext -[hidden]down- Transaction
+Transaction -[hidden]left- TransactionInterchangeFee
+Transaction -[hidden]right- TransactionSchemeFee
+TransactionInterchangeFee -[hidden]down- InterchangeFeeRule
+InterchangeFeeRule -[hidden]left- BilateralAgreement
+TransactionSchemeFee -[hidden]down- SchemeFeeRule
+SchemeFeeRule -[hidden]down- SchemeFeeRate
 
-' Rate Detail Relationships
-SchemeFeeRateStructure *-- "0..1" SimpleSchemeRate : simple pricing
-SchemeFeeRateStructure *-- "0..*" TieredSchemeRate : tiered pricing
+' Relationships with strategic routing to avoid overlaps
+Transaction ||--|| TransactionContext : "1" to "1"\nhas
 
-' Transaction to Scheme Fee Relationships
-Transaction *-- "0..*" TransactionSchemeFee : has scheme fees
-SchemeFeeEvent "1" -- "0..*" TransactionSchemeFee : applied to transactions
+Transaction ||--|| TransactionInterchangeFee : "1" to "0..1"\nhas IC fee
 
-note right of SchemeFeeRateStructure
-  A rate structure can have either:
-  - Simple rates (flat/percentage)
-  - Tiered rates (volume-based)
-  - But not both simultaneously
+Transaction ||--|| TransactionSchemeFee : "1" to "0..*"\nhas SF fees
+
+TransactionInterchangeFee ||--|| InterchangeFeeRule : "0..*" to "1"\nuses
+
+TransactionInterchangeFee ||..|| BilateralAgreement : "0..*" to "0..1"\nmay use override
+
+TransactionSchemeFee ||--|| SchemeFeeRule : "0..*" to "1"\ncalculated from
+
+SchemeFeeRule ||--|| SchemeFeeRate : "1" to "1..*"\nhas rates
+
+' Strategically positioned notes
+note as N1
+  **Transaction Context**
+  Determines fee applicability
+  based on card presence, 
+  cross-border status, etc.
 end note
 
-note top of SchemeFeeEvent
-  Replaces simple SchemeFeeRule
-  with rich Mastercard structure
+note as N2
+  **Bilateral Agreement**
+  Contains override amounts
+  that replace standard IC rates
+  when agreement is active
 end note
 
-note bottom of TransactionSchemeFee
-  Enhanced to capture which
-  rate structure was applied
-  and resulting calculations
+note as N3
+  **Scheme Fee Rate**
+  Single class handles:
+  • Simple rates (flat/percentage)
+  • Tiered rates (volume-based)
+  rateType field indicates model
 end note
+
+note as N4
+  **Multiple Scheme Fees**
+  One transaction can have
+  multiple scheme fees:
+  auth, clearing, settlement, etc.
+end note
+
+N1 .. TransactionContext
+N2 .. BilateralAgreement
+N3 .. SchemeFeeRate
+N4 .. TransactionSchemeFee
 
 @enduml

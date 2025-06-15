@@ -1,19 +1,46 @@
 @startuml
 !theme plain
-title Stateless Compute Engines - Use Case Diagram
+title P2S Stateless Compute Engines - Use Case Diagram
 
 actor "Transaction Processor" as TP
+actor "System Administrator" as SA
+actor "Business Analyst" as BA
 
-rectangle "Stateless Compute Engine" {
-    usecase "Qualify Transaction\nContextually" as UC1
-    usecase "Compute Scheme Fees" as UC2
-    usecase "Compute Interchange Fees" as UC3
-    usecase "Process Transaction\nRequest" as UC4
+package "P2S Compute Engine System" {
+    
+    usecase "Process Transaction\nRequest" as UC1
+    usecase "Qualify Transaction\nContext" as UC2
+    usecase "Calculate Interchange\nFees" as UC3
+    usecase "Calculate Scheme\nFees" as UC4
+    usecase "Monitor System\nHealth" as UC5
+    usecase "Manage Fee\nRules" as UC6
+    usecase "Handle Error\nConditions" as UC7
+    usecase "Analyze Fee\nResults" as UC8
 }
 
-TP --> UC4 : initiates
+' Primary relationships
+TP --> UC1 : initiates
+SA --> UC5 : monitors
+SA --> UC6 : manages
+SA --> UC7 : handles
+BA --> UC8 : analyzes
 
-UC4 ..> UC1 : <<include>>
-UC4 ..> UC2 : <<include>>
-UC4 ..> UC3 : <<include>>
+' Include relationships
+UC1 ..> UC2 : <<include>>
+UC2 ..> UC3 : <<include>>
+UC2 ..> UC4 : <<include>>
+
+' Extend relationships
+UC7 ..> UC1 : <<extend>>
+
+note right of UC1
+  Main processing flow through
+  stateless compute engines
+end note
+
+note bottom of UC7
+  Error handling for validation
+  failures and system issues
+end note
+
 @enduml

@@ -1,0 +1,75 @@
+@startuml
+!theme plain
+title P2S Compute Engines - Infrastructure Architecture
+
+abstract class BaseWorkerEngine {
+    -String workerId
+    -KafkaHandler kafkaHandler
+    -CacheManager cache
+    -DatabaseAccess database
+    +processMessage(TransactionMessage)
+    +handleError(Exception)
+    +publishResult(ProcessingResult)
+}
+
+class MetaWorkerEngine extends BaseWorkerEngine {
+    -BinDataService binService
+    +enrichTransaction()
+    +validateISO20022()
+}
+
+class ContextQualificationEngine extends BaseWorkerEngine {
+    -RuleEvaluationService ruleService
+    +qualifyContext()
+    +applyBusinessRules()
+}
+
+class InterchangeCalculationEngine extends BaseWorkerEngine {
+    -FeeCalculationService feeService
+    +calculateInterchangeFee()
+    +applyRegulatoryCaps()
+}
+
+class SchemeFeeCalculationEngine extends BaseWorkerEngine {
+    -CostCodeService costCodeService
+    +calculateSchemeFees()
+    +resolveCostCodes()
+}
+
+class TransactionMessage {
+    +UUID correlationId
+    +Map<String, Object> data
+    +validateSchema()
+}
+
+class ProcessingResult {
+    +Boolean success
+    +Object result
+    +List<Error> errors
+}
+
+' Relationships
+BaseWorkerEngine <|-- MetaWorkerEngine
+BaseWorkerEngine <|-- ContextQualificationEngine
+BaseWorkerEngine <|-- InterchangeCalculationEngine
+BaseWorkerEngine <|-- SchemeFeeCalculationEngine
+
+BaseWorkerEngine ..> TransactionMessage : processes
+BaseWorkerEngine ..> ProcessingResult : produces
+
+note right of BaseWorkerEngine
+  Unified core providing:
+  • Kafka message handling
+  • Error management
+  • Cache operations
+  • Database access
+end note
+
+note bottom of MetaWorkerEngine
+  Specializes in:
+  • Transaction enrichment
+  • ISO 20022 validation
+  • BIN data lookup
+end note
+
+@enduml

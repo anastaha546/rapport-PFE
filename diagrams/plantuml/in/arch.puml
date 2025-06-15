@@ -75,7 +75,7 @@ package "Kafka Event Streaming Platform" as KafkaLayer {
 package "Compute Engine Workers" as ComputeLayer {
     
     package "Meta Processing Layer" as MetaLayer {
-        rectangle "Meta Worker" as MW <<worker>>
+        rectangle "Meta Worker Engine" as MW <<worker>>
         database "BIN Cache" as MW_CACHE <<dataStore>>
         database "Geo Database" as MW_DB <<dataStore>>
         
@@ -84,15 +84,15 @@ package "Compute Engine Workers" as ComputeLayer {
     }
     
     package "Context Processing Layer" as ContextLayer {
-        rectangle "Context Worker" as CW <<worker>>
+        rectangle "Context Qualification Engine" as CW <<worker>>
         database "Rules Cache" as CW_CACHE <<dataStore>>
         
         CW -down-> CW_CACHE
     }
     
     package "Fee Calculation Layer" as FeeLayer {
-        rectangle "IC Worker" as ICW <<worker>>
-        rectangle "SF Worker" as SFW <<worker>>
+        rectangle "Interchange Calculation Engine" as ICW <<worker>>
+        rectangle "Scheme Fee Calculation Engine" as SFW <<worker>>
         database "Fee Rules Cache" as SHARED_CACHE <<dataStore>>
         
         ICW -down-> SHARED_CACHE

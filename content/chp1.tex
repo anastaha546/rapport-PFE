@@ -1,17 +1,17 @@
-\chapter{Project and project management}\label{chap:intro}
-\fancyhead[R]{Project and project management}
+\chapter{Project Framework and Methodology}\label{chap:project}
+\fancyhead[R]{Project Framework and Methodology}
 
-\textit{``This chapter provides a comprehensive overview of the project context, including the host organization presentation, problem statement, project objectives, and the management methodology employed. It establishes the foundation for understanding the real-time fee calculation system development within the P2S financial platform.''}
+\textit{``This chapter establishes the comprehensive project framework for developing the real-time fee calculation system within the P2S financial platform. It covers the project context, host organization, problem definition, solution approach, project management methodology, and technical foundations that guide the implementation of stateless computational engines.''}
 
 \pagebreak
 
 \section{Introduction}
 
-The French electronic payment ecosystem presents significant challenges for financial institutions in processing transaction fees from international payment networks. These challenges stem from both structural complexities in fee determination and computational inefficiencies in current processing systems. This project addresses these challenges through the development of an integrated framework that combines systematic fee structure normalization with high-performance computational engines.
+The development of high-performance fee calculation systems represents a critical challenge for financial institutions operating within the French electronic payment ecosystem. This project addresses fundamental inefficiencies in contemporary payment processing through the design and implementation of stateless computational engines optimized for real-time transaction fee determination.
 
-The project is part of the Payment Steering Solution (P2S) initiative, which aims to enhance fee calculation accuracy and efficiency through a robust two-tier architecture. This architecture consists of a Document Normalization Layer that standardizes heterogeneous fee rules, and a Transaction Processing Layer that applies these rules efficiently in real-time environments.
+The project operates within the Payment Steering Solution (P2S) initiative, focusing specifically on the development of scalable computational architectures that leverage pre-normalized fee structures to achieve optimal performance characteristics. The primary objective is creating a robust framework capable of processing high-volume transaction streams while maintaining accuracy and compliance with payment scheme regulations.
 
-The primary focus of this thesis is the design and implementation of stateless computational engines capable of processing high-volume transaction streams while maintaining accuracy and compliance with payment scheme regulations. These engines operate on pre-normalized fee structures to achieve optimal performance characteristics that would be impossible with traditional real-time document parsing approaches.
+This chapter establishes the foundational framework for the project, including organizational context, problem definition, solution methodology, and management approach that guides the subsequent technical development phases.
 
 \section{Project Context and Motivation}
 
@@ -121,70 +121,6 @@ Effyis Group has developed several proprietary solutions:
     \caption{EFFYIS Group Company Information}
 \end{table}
 
-\section{Payment Industry Overview}
-
-The payment industry encompasses a complex ecosystem of infrastructure, institutions, and processes that facilitate monetary value transfer between transacting parties. Understanding this ecosystem is essential for appreciating the technical challenges addressed by this project.
-
-\subsection{Transaction Lifecycle}
-
-Payment transactions follow a three-phase lifecycle:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{img/Txn_Phases.png}
-    \caption{Payment Transaction Lifecycle}
-\end{figure}
-
-\begin{itemize}
-   \item \textbf{Authorization:} Real-time verification of payment credentials against predetermined criteria, including account status, available funds, and fraud indicators. This process typically executes within milliseconds, culminating in approval or rejection.
-   
-   \item \textbf{Clearing:} Administrative process for exchanging transaction data between participating financial institutions, including reconciliation procedures, fee calculations, and settlement instruction preparation. Clearing typically operates on batch processing schedules.
-   
-   \item \textbf{Settlement:} Final transfer of monetary value between financial institutions through established financial networks, often facilitated by central monetary authorities or specialized settlement entities.
-\end{itemize}
-
-\subsection{Ecosystem Participants}
-
-The payment ecosystem comprises several key participants:
-
-\begin{itemize}
-   \item \textbf{Consumer:} Transaction initiator using payment credentials linked to accounts at issuing institutions
-   \item \textbf{Merchant:} Commercial entity accepting payment for goods or services
-   \item \textbf{Issuer:} Financial institution responsible for credential issuance and consumer account maintenance
-   \item \textbf{Acquirer:} Financial institution providing payment acceptance services to merchants
-   \item \textbf{Card Network:} Infrastructure provider establishing connectivity between issuers and acquirers
-\end{itemize}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{img/Txn_Actors.png}
-    \caption{Payment Ecosystem Participants and Fee Flow}
-\end{figure}
-
-\subsection{Fee Structure}
-
-The payment ecosystem operates on a multi-party fee structure:
-
-\begin{itemize}
-   \item \textbf{Interchange Fee:} Compensation from acquirers to issuers for each transaction, incentivizing credential issuance and compensating for credit risk
-   \item \textbf{Scheme Fee:} Compensation to card networks for infrastructure services, financing network operations and fraud detection systems
-   \item \textbf{Acquirer Fee:} Compensation retained by acquirers for merchant services, covering processing costs and risk management
-\end{itemize}
-
-\subsection{Messaging Architectures}
-
-Two principal messaging architectures are employed:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{img/Txn_SMS_DMS.png}
-    \caption{Single and Dual Messaging Systems}
-\end{figure}
-
-\begin{itemize}
-   \item \textbf{Single Messaging System (SMS):} Unified communication pathway processing authorization, clearing, and settlement concurrently in real-time
-   \item \textbf{Dual Messaging System (DMS):} Separate authorization and clearing phases, enabling complex transaction scenarios and delayed settlement
-\end{itemize}
 
 \section{Problem Statement}
 
@@ -228,48 +164,58 @@ The compound nature of these challenges requires a comprehensive solution addres
 
 \section{Project Scope}
 
-This project encompasses the design, implementation, and validation of an integrated framework for real-time fee calculation within the French payment ecosystem, focusing specifically on Visa and Mastercard fee structure optimization within the existing P2S platform infrastructure.
+This project focuses on the design, implementation, and validation of a \textbf{proof-of-concept stateless computational architecture} for real-time fee calculation within the P2S platform. The work serves as a foundation for the broader P2S production system that will be developed in subsequent phases beyond this internship period.
 
-\subsection{Project Framework}
+\subsection{Project Framework Context}
 
-The complete framework consists of two interconnected components:
+The complete P2S framework envisioned consists of two interconnected components:
 
 \subsubsection{Rule Normalization Framework}
-Systematic transformation of heterogeneous payment scheme documentation into standardized, computationally-optimized data formats while preserving semantic integrity of fee determination logic.
+Systematic transformation of heterogeneous payment scheme documentation into standardized, computationally-optimized data formats while preserving semantic integrity of fee determination logic. \textit{(Future production development - out of scope for this internship)}
 
 \subsubsection{Stateless Computational Engine Architecture}
-High-performance processing engines operating on normalized data structures to achieve optimal fee determination in real-time environments. This component represents the primary focus of this thesis.
+High-performance processing engines operating on normalized data structures to achieve optimal fee determination in real-time environments. \textbf{This component represents the primary focus of this internship project as a proof-of-concept implementation.}
 
-\subsection{Thesis Focus}
+\subsection{Internship Project Focus}
 
-This thesis concentrates specifically on the stateless computational engine architecture, encompassing:
+This internship project concentrates specifically on developing and validating the core concepts of the stateless computational engine architecture through:
 
 \begin{enumerate}
-    \item \textbf{Architecture Design:} Development of specialized computational units for independent operation on normalized fee data
-    \item \textbf{Algorithm Optimization:} Implementation of efficient transaction-to-rule matching algorithms with parallel processing capabilities
-    \item \textbf{Performance Validation:} Comprehensive evaluation of computational efficiency gains and scalability characteristics
+    \item \textbf{Proof-of-Concept Architecture:} Development of foundational computational engine components demonstrating the viability of the stateless approach
+    \item \textbf{Core Algorithm Implementation:} Implementation of essential transaction processing and fee calculation logic with basic optimization
+    \item \textbf{Performance Baseline Validation:} Establishing performance baselines and demonstrating scalability potential for future production deployment
+    \item \textbf{Integration Foundation:} Creating the integration framework and messaging patterns for future production enhancement
 \end{enumerate}
 
 \subsection{Project Boundaries}
 
-\textbf{In Scope:}
+\textbf{In Scope (Proof-of-Concept Deliverables):}
 \begin{itemize}
-    \item Stateless computational engine design and implementation
-    \item Real-time transaction processing optimization
-    \item Integration with existing P2S platform components
-    \item Performance benchmarking and validation
-    \item Support for Dual Messaging System (DMS) architecture
-    \item French payment market infrastructure focus
+    \item Core stateless computational engine architecture design and basic implementation
+    \item Foundational transaction processing pipeline with essential optimization
+    \item Basic integration with P2S platform components and messaging infrastructure
+    \item Performance baseline establishment and scalability concept validation
+    \item Support for key DMS processing patterns
+    \item Development environment deployment and testing framework
 \end{itemize}
 
-\textbf{Out of Scope:}
+\textbf{Out of Scope (Reserved for Future Production Development):}
 \begin{itemize}
-    \item Complete P2S platform redesign
-    \item International payment networks beyond Visa/Mastercard
-    \item Single Messaging System (SMS) implementation
-    \item Fee rule extraction and normalization processes
-    \item Non-French regulatory framework compliance
+    \item Production-scale deployment and full operational optimization
+    \item Complete fee rule extraction and automatic data normalization
+    \item Comprehensive international payment network coverage
+    \item Advanced performance tuning and enterprise-grade monitoring
+    \item Full regulatory compliance framework implementation
+    \item Complete P2S platform integration and production deployment
 \end{itemize}
+
+\subsection{Project Constraints and Key Assumptions}
+
+\textbf{Data Model Constraints:}
+The implementation operates under the assumption of evolving input data schemas, requiring flexible architecture to accommodate ongoing specification changes from the client organization.
+
+\textbf{Infrastructure Constraints:}
+Development and testing conducted on shared development infrastructure, with production performance projections based on architectural analysis rather than dedicated environment testing.
 
 \section{Project Charter}
 
@@ -278,20 +224,20 @@ The project charter establishes the foundational framework for developing the re
 \subsection{Project Objectives}
 
 \begin{itemize}
-    \item \textbf{Real-Time Processing:} Develop a distributed system capable of calculating transaction fees in real-time with sub-second response times
-    \item \textbf{Platform Integration:} Seamlessly integrate with existing P2S infrastructure while maintaining compatibility with other system components
-    \item \textbf{Operational Transparency:} Provide financial institutions with clear visibility into fee structures and calculation processes
-    \item \textbf{Scalability:} Design the system to handle high transaction volumes through stateless worker architecture and horizontal scaling
+    \item \textbf{Proof-of-Concept Validation:} Develop and validate the fundamental concepts of stateless computational architecture for fee calculation with processing capabilities demonstrating scalability potential
+    \item \textbf{Foundation Integration:} Establish basic integration patterns with P2S infrastructure and messaging components, creating the foundation for future production deployment
+    \item \textbf{Architecture Demonstration:} Demonstrate the viability of event-driven, stateless processing architecture through working prototype implementation
+    \item \textbf{Performance Baseline:} Establish performance baselines (target: 1000+ TPS) and validate horizontal scaling concepts through development environment testing
 \end{itemize}
 
 \subsection{Project Deliverables}
 
 \begin{itemize}
-    \item \textbf{Computational Framework:} Production-ready fee calculation engines implemented as scalable microservices
-    \item \textbf{Integration Components:} Complete message broker integration, caching layer, and database connectivity
-    \item \textbf{Validation System:} Comprehensive data validation framework with schema compliance and business rule verification
-    \item \textbf{Documentation Suite:} Technical documentation including architecture specifications and operational procedures
-    \item \textbf{Testing Framework:} Complete testing suite with unit tests, integration tests, and performance validation tools
+    \item \textbf{Proof-of-Concept Computational Framework:} Foundational fee calculation engines demonstrating stateless architecture viability and basic microservices patterns
+    \item \textbf{Basic Integration Components:} Essential message broker integration, basic caching implementation, and database connectivity foundation
+    \item \textbf{Core Validation Framework:} Fundamental data validation with ISO 20022-inspired structure and essential business rule verification
+    \item \textbf{Technical Documentation:} Architecture design documentation, implementation guidelines, and performance analysis for future production development
+    \item \textbf{Development Testing Suite:} Core testing framework with unit tests, basic integration tests, and performance baseline validation tools
 \end{itemize}
 
 \section{Project Requirements}
@@ -300,7 +246,7 @@ The project charter establishes the foundational framework for developing the re
 
 \subsubsection{Core Processing Capabilities}
 \begin{itemize}
-    \item \textbf{Data Validation:} ISO 20022 message structure validation and business rule compliance verification
+    \item \textbf{Data Validation:} Financial message structure validation based on ISO 20022 principles and business rule verification
     \item \textbf{Context Analysis:} Geographic classification, merchant categorization, and payment instrument identification
     \item \textbf{Fee Computation:} Interchange and scheme fee calculation with support for multiple determination methods
     \item \textbf{System Integration:} Kafka message processing, database operations, and caching integration
@@ -773,5 +719,46 @@ This architecture provides the foundation for reliable, scalable, and maintainab
 
 
 
-\subsection{Conclusion}
-This technology stack leverages a modern, robust set of technologies that ensure high performance, scalability, and maintainability. The combination of Java and Spring Boot provides a solid foundation for microservices development, while Apache Kafka and PostgreSQL enable efficient data processing and storage. Redis enhances system responsiveness through caching, and Docker ensures consistent deployment across environments. The integration of advanced tools like Avro and Confluent Schema Registry further strengthens the system's reliability and data integrity.
+\section{Technical Stack}
+
+\subsection{Core Development Platform}
+
+\textbf{Java:} Primary programming language providing platform independence, strong type system, and extensive ecosystem for enterprise application development.
+
+\textbf{Spring Boot:} Application framework enabling rapid development of microservices with auto-configuration, embedded servers, and production-ready features.
+
+\subsection{Data Management}
+
+\textbf{PostgreSQL:} Primary relational database for transactional data storage, providing ACID compliance and complex query support.
+
+\textbf{Redis:} In-memory caching solution for frequently accessed data, reducing database load and improving response times.
+
+\subsection{Event Processing}
+
+\textbf{Apache Kafka:} Distributed event streaming platform for real-time data pipeline management and inter-service communication.
+
+\textbf{Apache Avro:} Data serialization framework ensuring efficient data exchange and schema evolution capabilities.
+
+\textbf{Confluent Schema Registry:} Centralized schema management for Kafka topics, ensuring data consistency across microservices.
+
+\subsection{Development Operations}
+
+\textbf{GitLab:} Source code management and CI/CD pipeline automation for collaborative development and deployment.
+
+\textbf{Docker:} Containerization platform ensuring consistent deployment environments and horizontal scaling capabilities.
+
+\textbf{Apache Maven:} Build automation and dependency management for Java projects.
+
+\section{Chapter Conclusion}
+
+This chapter has established the comprehensive foundation for the \textbf{proof-of-concept stateless computational architecture} development within the P2S financial platform. The analysis reveals significant challenges in contemporary payment processing systems, particularly in structural representation of fee rules and computational efficiency in their application.
+
+The identified problems - heterogeneous documentation formats and computational bottlenecks - directly impact operational efficiency and cost structures for financial institutions. The proposed proof-of-concept addresses these challenges through demonstrating the viability of stateless computational engines that can form the foundation for future production-scale implementation.
+
+Effyis Group provides an ideal environment for this proof-of-concept development, with its specialized focus on payment systems and established P2S platform infrastructure. The company's flat organizational structure and agile development practices support the iterative approach necessary for validating complex financial system architectures.
+
+The adoption of Scrum methodology ensures structured project management while maintaining flexibility for technical experimentation and validation. The comprehensive technical stack, centered on Java and Spring Boot with supporting technologies for data management and event processing, provides a robust foundation for implementing and testing the proposed architectural concepts.
+
+\textbf{Project Positioning:} This internship project serves as a critical foundation phase, developing and validating core architectural concepts that will guide the subsequent production-scale implementation of the complete P2S fee calculation system. The proof-of-concept approach allows for thorough validation of technical assumptions and performance characteristics before committing to full-scale production development.
+
+The next chapter will provide detailed analysis of the payment industry domain, establishing the business and technical context necessary for understanding the computational challenges that motivate the architectural approach validated in this proof-of-concept implementation.
